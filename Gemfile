@@ -59,7 +59,7 @@ gem 'cancan'
 gem 'kaminari'
 gem 'carrierwave', "~> 0.6.2"
 gem 'carrierwave-upyun', '~> 0.1.6'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'mime-types'
 gem 'redcarpet'
 gem 'coderay'
