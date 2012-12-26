@@ -7,7 +7,7 @@ set :rvm_ruby_string, 'ruby-1.9.3-p327-falcon'
 set :rvm_type, :system  # Copy the exact line. I really mean :system here
 require "rvm/capistrano"
 
-set :repository,  "git@github.com:AndySze/taolinggan.git"
+set :repository,  "git://github.com/AndySze/taolinggan.git"
 set :deploy_to, "/home/andy/#{application}"
 
 
