@@ -47,7 +47,7 @@
           %span.guillemet.left-guillemet «
           = link_to @prev_topic.title, t_path(@prev_topic.id), :class => :rabel, :rel => :next
       - if user_signed_in?
-        %span.centered
+        %span.fr
           - if current_user.bookmarked?(@topic)
             = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'btn btn-mini unbookmark'
           - else

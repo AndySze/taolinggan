@@ -5,7 +5,8 @@
         = Siteconf.marketing.join('&nbsp;<span class="snow">&nbsp;•&nbsp;</span>&nbsp;').html_safe
     .bigger.welcome= Siteconf.welcome_tip.html_safe
     .sep10
-    = Siteconf.splash.html_safe
+    - unless current_user
+      = Siteconf.splash.html_safe
   - if @sticky_topics.any?
     - if Siteconf.sticky_topics_heading.present?
       #sticky_topics.cell.topics_heading= Siteconf.sticky_topics_heading

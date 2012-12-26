@@ -5,9 +5,10 @@
     .copywrite
       = Siteconf.footer.html_safe
     %small.muted
-      Powered by
-      = link_to 'Rabel', 'http://rabelapp.com', :target => '_blank', :class => :muted
+      论坛由
+      = link_to 'Rabel', 'http://rabelapp.com', :target => '_blank', :class => :muted, :rel => 'nofollow'
       = Rabel.version
+      定制
 
 = render 'shared/google_analytics'
 

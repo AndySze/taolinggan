@@ -86,7 +86,7 @@ class UsersController < ApplicationController
 
   def my_topics
     @my_topics = current_user.bookmarked_topics
-    @title = '我收藏的话题'
+    @title = '我收藏的燃料'
 
     respond_to do |format|
       format.html
@@ -97,7 +97,7 @@ class UsersController < ApplicationController
   def my_following
     @my_followed_users = current_user.followed_users
     @followed_topic_timeline = current_user.followed_topic_timeline
-    @title = '我的特别关注'
+    @title = '我的灵感同盟'
 
     respond_to do |format|
       format.html
@@ -108,7 +108,7 @@ class UsersController < ApplicationController
   def follow
     @followed_user = User.find_by_nickname!(params[:nickname])
     unless current_user.following?(@followed_user)
-      flash[:error] = '加入特别关注失败' unless current_user.follow(@followed_user)
+      flash[:error] = '加入灵感同盟失败' unless current_user.follow(@followed_user)
     end
     redirect_to member_path(params[:nickname])
   end
@@ -116,7 +116,7 @@ class UsersController < ApplicationController
   def unfollow
     @followed_user = User.find_by_nickname!(params[:nickname])
     if current_user.following?(@followed_user)
-      flash[:error] = '取消特别关注失败' unless current_user.unfollow(@followed_user)
+      flash[:error] = '取消灵感同盟失败' unless current_user.unfollow(@followed_user)
     end
     redirect_to member_path(params[:nickname])
   end

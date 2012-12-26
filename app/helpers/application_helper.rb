@@ -159,7 +159,7 @@ module ApplicationHelper
 
   def nickname_profile_link(nickname, options={})
     options[:title] = nickname
-    hash_key_append(options, :class, 'rabel profile_link')
+    hash_key_append(options, :class, 'dark rabel profile_link')
 
     link_to nickname, member_path(url_encode(nickname)), options
   end
