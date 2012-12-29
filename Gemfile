@@ -52,6 +52,9 @@ group :development do
   gem 'thin', '= 1.5.0'
 end
 
+# Markdown 格式
+gem "redcarpet", "~> 2.0.0"
+
 gem 'haml'
 gem 'devise'
 gem 'settingslogic'
@@ -61,7 +64,6 @@ gem 'carrierwave', "~> 0.6.2"
 gem 'carrierwave-upyun', '~> 0.1.6'
 gem 'mini_magick'
 gem 'mime-types'
-gem 'redcarpet'
 gem 'coderay'
 gem 'kgio'
 gem 'dalli'
