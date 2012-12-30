@@ -1,7 +1,10 @@
 .alert.alert-info 如果标题已经包含你想说的话，内容可以留空。
-= simple_form_for [node, topic], :html => {:class => 'form-vertical'} do |f|
+= simple_form_for topic, :html => {:class => 'form-vertical'} do |f|
   %a{:name => 'new_topic'}/
-  = f.input :title, :label => '标题', :input_html => {:maxlength => 150, :class => :span6}
+  //= f.input :title, :label => '标题', :input_html => {:maxlength => 150, :class => :span6}
+  = f.input :title, :label => '标题' do
+    = render_topic_node_select_tag(topic)
+    = f.text_field :title, :class => :span4
   = render 'shared/fileupload_widget', :textarea_selector => "textarea#topic_content" if Settings.upyun.switch == 'on'
   = render 'shared/preview_widget', :ref => :topic_content, :type => :topic
   = f.input :content, :input_html => {:rows => 10, :style => 'width: 98%;'}, :label => false, :placeholder => '话题内容'

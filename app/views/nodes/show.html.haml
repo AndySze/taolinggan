@@ -2,6 +2,8 @@
   - content_for :template_js do
     $("a.super").click(function() { $("textarea.mll:first").focus() });
 
+= render 'shared/new_topics'
+
 - if user_signed_in? and current_user.can_manage_site?
   - content_for :rightbar do
     .box
@@ -28,19 +30,10 @@
     - if @node.introduction.present?
       .sep10
       %span.gray= @node.introduction
-    - if user_signed_in?
-      .sep10
-      = link_to '创建新话题', '#new_topic', :class => 'btn btn-normal'
       .sep5
   = render @topics
   .inner
     = render 'paginator'
 
-- if user_signed_in?
-  .box
-    .box-header
-      创建新话题
-    .inner
-      = render 'topics/form', :node => @node, :topic => @node.topics.new, :comments_closed => false
 
 

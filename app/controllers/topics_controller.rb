@@ -1,7 +1,8 @@
 # encoding: utf-8
 class TopicsController < ApplicationController
+  include TopicsHelper
   before_filter :authenticate_user!, :except => [:show, :index]
-  before_filter :find_node, :except => [:show, :index, :preview, :toggle_comments_closed, :toggle_sticky]
+  before_filter :find_node, :except => [:new, :create, :show, :index, :preview, :toggle_comments_closed, :toggle_sticky]
   before_filter :find_topic_and_auth, :only => [:edit_title,:update_title,
     :edit, :update, :move, :destroy]
   before_filter :only => [:toggle_comments_closed, :toggle_sticky] do |c|
@@ -71,7 +72,15 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = @node.topics.new
+    @topic = Topic.new
+
+    if !params[:node_id].blank?
+      @topic.node_id = params[:node_id]
+      @node = Node.find_by_id(params[:node_id])
+      if @node.blank?
+        #render_404
+      end
+    end
 
     respond_to do |format|
       format.html
@@ -80,8 +89,11 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = @node.topics.new(params[:topic], :as => current_user.permission_role)
+    pt = params[:topic]
+    @topic = Topic.new(params[:topic], :as => current_user.permission_role)
     @topic.user = current_user
+    @topic.node_id = pt[:node_id]
+
     if @topic.save
       redirect_to t_path(@topic.id)
     else

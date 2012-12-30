@@ -1,0 +1,14 @@
+- content_for :rightbar do
+  .box
+    .cell
+      .btn-group
+        = link_to("创建新话题", new_topic_path, :class => "btn btn-success")
+        <button class="btn btn-success dropdown-toggle" data-toggle="dropdown"> 
+        <span class="caret"></span> 
+        </button> 
+        %ul{:class => "dropdown-menu"}
+          -Node.all.each do |node|
+            %li
+              = link_to(node.name, new_topic_path(:node_id => node.id))
+
+

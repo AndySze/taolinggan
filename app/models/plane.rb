@@ -10,4 +10,10 @@ class Plane < ActiveRecord::Base
   def can_delete?
     self.nodes.count == 0
   end
+
+  def sorted_nodes
+    self.nodes
+    #self.nodes.sorted
+  end
+
 end
