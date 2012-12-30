@@ -27,7 +27,8 @@ class Topic < ActiveRecord::Base
   end
 
   def locked?
-    Time.now - self.created_at > Siteconf.topic_editable_period
+    #Time.now - self.created_at > Siteconf.topic_editable_period
+    return false
   end
 
   def allow_modification_by?(user)

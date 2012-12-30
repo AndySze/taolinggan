@@ -8,10 +8,13 @@
         %td{:width => 10}
         %td{:width => :auto, :valign => :top}
           .fr
-            - if user_signed_in? and current_user.can_manage_site?
-              %small.hover_action
-                = link_to 'EDIT', edit_comment_path(comment), :class => 'rabel edit', :remote => :true
-                = link_to 'DEL', comment_path(comment), :method => :delete, :data => {:confirm => I18n.t(:delete_confirm)}, :class => 'rabel', :remote => true
+            - if user_signed_in? and (current_user.can_manage_site? or comment.user_id == current_user.id)
+              %small
+                = link_to edit_comment_path(comment), :class => 'rabel edit', :remote => :true do
+                  <i class="icon-pencil"></i>
+                &nbsp;&nbsp;
+                = link_to comment_path(comment), :method => :delete, :data => {:confirm => I18n.t(:delete_confirm)}, :class => 'rabel', :remote => true do
+                  <i class="icon-remove"></i>
             %small.snow
               - _num = comment_counter + 1
               - if @total_pages > 1
