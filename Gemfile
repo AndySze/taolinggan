@@ -55,6 +55,9 @@ end
 # Markdown 格式
 gem "redcarpet", "~> 2.0.0"
 
+# social share button
+gem 'social-share-button'
+
 gem 'haml'
 gem 'devise'
 gem 'settingslogic'
