@@ -53,17 +53,6 @@
               = link_to node_topic_path(@node, @topic), :method => :delete, :data => {:confirm => t(:delete_confirm)}, :class => 'btn btn-mini' do
                 <i class="icon-remove"></i>
       .clearfix
-    .inner.relative-container
-      - if @next_topic.present?
-        .pull-right
-          = link_to @next_topic.title, t_path(@next_topic.id), :class => :rabel, :rel => :prev
-          %span.guillemet.right-guillemet »
-
-      - if @prev_topic.present?
-        .pull-left
-          %span.guillemet.left-guillemet «
-          = link_to @prev_topic.title, t_path(@prev_topic.id), :class => :rabel, :rel => :next
-      .clearfix
 
 = render 'topics/show/comments' if @comments.any?
 

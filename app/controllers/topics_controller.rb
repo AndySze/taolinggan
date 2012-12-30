@@ -62,8 +62,8 @@ class TopicsController < ApplicationController
     @canonical_path += "?p=#{@current_page}" if @total_pages > 1
     @seo_description = "#{@node.name} - #{@topic.user.nickname} - #{@topic.title}"
 
-    @prev_topic = @topic.prev_topic(@node)
-    @next_topic = @topic.next_topic(@node)
+    #@prev_topic = @topic.prev_topic(@node)
+    #@next_topic = @topic.next_topic(@node)
 
     respond_to do |format|
       format.html
