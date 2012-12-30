@@ -227,7 +227,6 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       slim (~> 1.0)
-    social-share-button (0.1.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -300,7 +299,6 @@ DEPENDENCIES
   shoulda-matchers
   simple_form (~> 2.0.4)
   slim-rails (~> 1.0.3)
-  social-share-button
   therubyracer (~> 0.10.2)
   thin (= 1.5.0)
   uglifier (>= 1.0.3)

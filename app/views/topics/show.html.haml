@@ -39,7 +39,7 @@
       .content.topic_content= format_topic(@topic.content)
     .inner
       - if user_signed_in?
-        = social_share_button_tag(@topic.title)
+        = render 'shared/baidu_share'
         %span.fr
           - if current_user.bookmarked?(@topic)
             = link_to '取消收藏', current_user.bookmark_of(@topic), :method => :delete, :class => 'btn btn-mini unbookmark'

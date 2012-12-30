@@ -56,7 +56,7 @@ end
 gem "redcarpet", "~> 2.0.0"
 
 # social share button
-gem 'social-share-button'
+# gem 'social-share-button', :git => 'git://github.com/huacnlee/social-share-button.git'
 
 gem 'haml'
 gem 'devise'
