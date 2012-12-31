@@ -59,7 +59,7 @@ gem "redcarpet", "~> 2.0.0"
 # gem 'social-share-button', :git => 'git://github.com/huacnlee/social-share-button.git'
 
 # Googel Analytics monitoring
-gem 'garelic'
+#gem 'garelic' #not working rollback
 
 gem 'haml'
 gem 'devise'

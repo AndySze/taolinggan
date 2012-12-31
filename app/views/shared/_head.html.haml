@@ -6,6 +6,4 @@
 - if Siteconf.custom_css.present?
   %style{:type => 'text/css'}= Siteconf.custom_css.html_safe
 = javascript_include_tag "application"
-- if RAILS_ENV == production
-  = render Garelic.monitoring 'UA-35718066-1'
 = yield :final_head

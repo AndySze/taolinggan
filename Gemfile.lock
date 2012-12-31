@@ -107,7 +107,6 @@ GEM
       factory_girl (~> 3.5.0)
       railties (>= 3.0.0)
     ffi (1.2.0)
-    garelic (0.0.2)
     gherkin (2.11.5)
       json (>= 1.4.6)
     haml (3.1.7)
@@ -281,7 +280,6 @@ DEPENDENCIES
   devise
   facebox-rails (~> 0.1.2)
   factory_girl_rails (~> 3.5.0)
-  garelic
   haml
   jquery-rails
   kaminari
