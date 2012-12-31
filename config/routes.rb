@@ -13,6 +13,7 @@ Rabel::Application.routes.draw do
   match '/topics/:id' => redirect('/t/%{id}'), :constraints => { :id => /\d+/ }
 
   get 'my/topics' => 'users#my_topics', :as => :my_topics
+  get 'member/:nickname/favorites' => 'users#my_topics', :as => :member_favorites
   get 'my/following' => 'users#my_following', :as => :my_following
   get 'page/:key' => 'pages#show', :as => :page
   get 'goodbye' => 'welcome#goodbye'
@@ -69,7 +70,7 @@ Rabel::Application.routes.draw do
 
     resource :site_settings
     resources :topics, :advertisements, :cloud_files, :rewards
-    
+
     resources :notifications do
       delete :clear, :on => :collection
     end

@@ -73,6 +73,11 @@ class User < ActiveRecord::Base
     Topic.find(ids)
   end
 
+#获取收藏的前是个帖子
+  def last_bookmarked_topics
+    self.bookmarked_topics[0..9]
+  end
+
   def recent_followers
     follower_ids = self.follower_relationships.order('created_at DESC').limit(10).pluck(:user_id)
     follower_ids.map { |uid| User.find_cached(uid) }

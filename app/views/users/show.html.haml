@@ -86,6 +86,15 @@
     .inner
       %span.chevron »
       %small= link_to "#{@user.nickname} 创建的更多主题", member_topics_path(@user.nickname), :class => :rabel
+.box
+  .box-header
+    = @user.nickname
+    收藏的话题
+  = render :partial => 'topics/profile_topic', :collection => @user.last_bookmarked_topics, :as => :topic, :locals => {:topic_user => @user}
+  - if @user.bookmarked_topics.any?
+    .inner
+      %span.chevron »
+      %small= link_to "#{@user.nickname} 收藏的更多主题", member_favorites_path(@user.nickname), :class => :rabel
 
 .box
   .box-header

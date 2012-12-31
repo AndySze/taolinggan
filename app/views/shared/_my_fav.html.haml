@@ -1,6 +1,6 @@
 %tr
   %td.with_separator{:width => '34%', :align => :center}
-    = link_to my_topics_path, :class => :dark, :style => 'display: block;' do
+    = link_to member_favorites_path(:nickname => current_user.nickname), :class => :dark, :style => 'display: block;' do
       %span.bigger= current_user.bookmarked_topics_count
       .sep3
       %span.gray 收藏
