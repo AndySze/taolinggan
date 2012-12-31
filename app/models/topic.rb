@@ -28,11 +28,12 @@ class Topic < ActiveRecord::Base
 
   def locked?
     #Time.now - self.created_at > Siteconf.topic_editable_period
-    return false
+    #return false
   end
 
   def allow_modification_by?(user)
-    (!locked? && self.user == user) || user.can_manage_site?
+    #(!locked? && self.user == user) || user.can_manage_site?
+    self.user == user || user.can_manage_site?
   end
 
   def notifiable_title

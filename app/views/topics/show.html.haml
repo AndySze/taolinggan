@@ -55,8 +55,6 @@
             .btn-group
               = link_to  edit_node_topic_path(@node, @topic), :class => 'btn btn-mini' do
                 <i class="icon-pencil"></i>
-              = link_to move_node_topic_path(@node, @topic), :remote => true, :class => 'btn btn-mini' do
-                <i class="icon-move"></i>移动到新节点
               = link_to node_topic_path(@node, @topic), :method => :delete, :data => {:confirm => t(:delete_confirm)}, :class => 'btn btn-mini' do
                 <i class="icon-remove"></i>
       .clearfix

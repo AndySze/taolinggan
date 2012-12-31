@@ -1,31 +1,20 @@
-- unless @topic.locked? or current_user.can_manage_site?
-  .box
-    .cell
-      %span.fade 修改功能指南
-    .inner
-      在新主题创建后的
-      = Siteconf.topic_editable_period_str
-      分钟内，可以自由编辑。
-      .sep5
-      %strong
-        距离本主题的编辑权限关闭还有&nbsp;
-        %span.orange= (@topic.created_at + Siteconf.topic_editable_period - Time.now).round
-        &nbsp;秒
-  - content_for :template_js do
-    :plain
-      var second = parseInt($("span.orange").text());
-      var countdown_id = setInterval(function() {
-        if (second == 0) {
-          $('#Rightbar strong').text('此主题编辑权限已经关闭');
-          clearInterval(countdown_id);
-          return;
-        }
-        second = second - 1;
-        $("span.orange").text(second);
-        }, 1000);
 .box
   .cell
     = edit_topic_navigation(@node, @topic)
   .cell
     = render 'form', :node => @node, :topic => @topic, :comments_closed => @topic.comments_closed?
+    //.alert.alert-info 如果标题已经包含你想说的话，内容可以留空。
+    //= simple_form_for @topic, :url => { :action => "update" }, :html => {:class => 'form-vertical'} do |f|
+    //  %a{:name => 'new_topic'}/
+    //  //= f.input :title, :label => '标题', :input_html => {:maxlength => 150, :class => :span6}
+    //  = f.input :title, :label => '标题' do
+    //    = render_topic_node_select_tag(@topic)
+    //    = f.text_field :title, :class => :span4
+    //  = render 'shared/fileupload_widget', :textarea_selector => "textarea#topic_content" if Settings.upyun.switch == 'on'
+    //  = render 'shared/preview_widget', :ref => :topic_content, :type => :topic
+    //  = f.input :content, :input_html => {:rows => 10, :style => 'width: 98%;'}, :label => false, :placeholder => '话题内容'
+    //  - if current_user.can_manage_site?
+    //    = f.input :sticky, :inline_label => '保持置顶', :label => false
+    //    = f.input :comments_closed, :inline_label => '禁止回复', :label => false
+    //  = f.submit (@topic.new_record? ? '创建' : '提交修改'), :class => 'btn btn-primary btn-inverse', :data => {:disable_with => t('tips.submitting')}
   .inner= render 'back_to_node', :node => @node

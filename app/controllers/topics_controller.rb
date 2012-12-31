@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   before_filter :find_node, :except => [:new, :create, :show, :index, :preview, :toggle_comments_closed, :toggle_sticky]
   before_filter :find_topic_and_auth, :only => [:edit_title,:update_title,
-    :edit, :update, :move, :destroy]
+    :update, :edit, :move, :destroy]
   before_filter :only => [:toggle_comments_closed, :toggle_sticky] do |c|
     auth_admin
   end
@@ -121,31 +121,42 @@ class TopicsController < ApplicationController
   end
 
   def update
-    if params[:new_node_id].present?
-      # move to new node
-      @new_node = Node.find(params[:new_node_id])
-      respond_to do |format|
-        format.js {
-          if @new_node.present?
-            @topic.node = @new_node
-            if @topic.save
-              render :js => "window.location.reload()"
-            else
-              render :js => "$.facebox('移动帖子失败')"
-            end
-          else
-            render :js => "$.facebox('节点不存在')"
-          end
-        }
-      end
+    pt = params[:topic]
+    @topic.node_id = pt[:node_id]
+    puts @topic.node_id
+    @topic.title = pt[:title]
+    @topic.content = pt[:content]
+    if @topic.save
+      redirect_to t_path(@topic.id)
     else
-      if @topic.update_attributes(params[:topic], :as => current_user.permission_role)
-        redirect_to t_path(@topic.id)
-      else
-        flash[:error] = '之前的更新有误，请编辑后再提交'
-        render :edit
-      end
+      flash[:error] = '之前的更新有误，请编辑后再提交'
+      render :edit
     end
+    #if params[:new_node_id].present?
+    #  # move to new node
+    #  @new_node = Node.find(params[:new_node_id])
+    #  respond_to do |format|
+    #    format.js {
+    #      if @new_node.present?
+    #        @topic.node = @new_node
+    #        if @topic.save
+    #          render :js => "window.location.reload()"
+    #        else
+    #          render :js => "$.facebox('移动帖子失败')"
+    #        end
+    #      else
+    #        render :js => "$.facebox('节点不存在')"
+    #      end
+    #    }
+    #  end
+    #else
+    #  if @topic.update_attributes(params[:topic], :as => current_user.permission_role)
+    #    redirect_to t_path(@topic.id)
+    #  else
+    #    flash[:error] = '之前的更新有误，请编辑后再提交'
+    #    render :edit
+    #  end
+    #end
   end
 
   def move
