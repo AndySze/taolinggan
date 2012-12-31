@@ -51,7 +51,11 @@ module Rabel
     end
 
     def self.external_link(content, url)
-      %(<a href="#{url}" class="external" target="_blank" rel="nofollow">#{content}</a>)
+      %(<a href="#{url}" class="external" target="_blank" rel="external nofollow">#{content}</a>)
+    end
+
+    def self.internal_link(content, url)
+      %(<a href="#{url}" target="_blank">#{content}</a>)
     end
 
     def self.show_image(url)

@@ -94,7 +94,11 @@ module Redcarpet
 
       def link(link, title, content)
         content = link unless content.present?
-        Rabel::Base.external_link(content, link)
+        if link.include?("http")
+          Rabel::Base.external_link(content, link)
+        else
+          Rabel::Base.internal_link(content, link)
+        end
       end
 
       def raw_html(raw_html)
@@ -102,7 +106,7 @@ module Redcarpet
       end
 
       def triple_emphasis(text)
-        %(<em>***#{text}***</em>)
+        %(<em>#{text}</em>)
       end
 
       def strikethrough(text)
