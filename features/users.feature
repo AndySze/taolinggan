@@ -27,7 +27,7 @@ Feature: Users
       And I am on the user's profile page
       Then page title should contain devin
         And I should see devin
-        And I should not see 加入特别关注
+        And I should not see 关注
         And I should see Rails is cool
 
   Scenario: visit other's personal homepage as authenticated user
@@ -40,7 +40,7 @@ Feature: Users
       And I am on dhh's profile page
       Then page title should contain dhh
         And I should see dhh
-        And I should see 加入特别关注
+        And I should see 关注
         And I should see Rails is cool
         Given nana has followed dhh
           And I am on dhh's profile page
@@ -52,18 +52,18 @@ Feature: Users
       And I am on devin's profile page
       Then page title should contain devin
         And I should see devin
-        And I should not see 加入特别关注
+        And I should not see 关注
         And I should see Rails is cool
 
   Scenario: follow and unfollow user
     Given an user exists with nickname: dhh
       And I have logged in as devin
       And I am on dhh's profile page
-      Then I should see 加入特别关注
-        When I click the link 加入特别关注
-          Then I should see 取消特别关注
-        When I click the link 取消特别关注
-          Then I should see 加入特别关注
+      Then I should see 关注
+        When I click the link 关注
+          Then I should see 取消关注
+        When I click the link 取消关注
+          Then I should see 关注
 
   Scenario: my following page
     Given I have logged in as devin

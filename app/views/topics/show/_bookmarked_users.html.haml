@@ -2,7 +2,7 @@
   - content_for :rightbar do
     .box
       .box-header
-        收藏此燃料的创友
+        收藏此帖子的人
       .inner
         - @topic.bookmarks.each do |b|
           = user_profile_avatar_link(b.user, :mini)

@@ -25,11 +25,11 @@
   .cell
     - if current_user.following?(@user)
       .fr
-        = link_to '取消特别关注', unfollow_user_path(@user.nickname), :method => :post
+        = link_to '取消关注', unfollow_user_path(@user.nickname), :method => :post
       %strong.fade
         已关注
     - else
-      = link_to '加入特别关注', follow_user_path(@user.nickname), :method => :post
+      = link_to '关注', follow_user_path(@user.nickname), :method => :post
 
 = render :partial => 'topics/profile_topic', :collection => @user.latest_created_topics, :as => :topic
 

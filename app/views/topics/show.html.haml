@@ -20,8 +20,14 @@
 .box
   %article
     .header
-      .pull-right
+      %div{ :class => "pull-right center" }
         = user_profile_avatar_link(topic_user, :large)
+        %div
+          - if user_signed_in? and @topic.user != current_user
+            - if current_user.following?(@topic.user)
+              = link_to '取消关注', unfollow_user_path(@topic.user.nickname), :method => :post, :class => 'btn btn-small btn-warning unfollow'
+            - else
+              = link_to '关注', follow_user_path(@topic.user.nickname), :method => :post, :class => 'btn btn-small btn-inverse follow'
       = build_navigation([link_to(@node.name, go_path(@node.key), :class => :rabel)], 'bigger')
       .sep10
       %h1#topic_title
