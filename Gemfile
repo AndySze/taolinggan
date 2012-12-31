@@ -58,6 +58,9 @@ gem "redcarpet", "~> 2.0.0"
 # social share button
 # gem 'social-share-button', :git => 'git://github.com/huacnlee/social-share-button.git'
 
+# Googel Analytics monitoring
+gem 'garelic'
+
 gem 'haml'
 gem 'devise'
 gem 'settingslogic'
