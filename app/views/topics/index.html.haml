@@ -1,3 +1,12 @@
+- if Siteconf.nav_position_sidebar?
+  - content_for :rightbar do
+    =render 'shared/new_topics'
+    .box.fix_cell
+      .box-header
+        节点导航
+      = render :partial => 'welcome/rightbar_plane', :collection => Plane.cached_all(Plane.default_order_str), :as => :plane
+
+    
 .box
   .cell= build_navigation([@title])
   = render @topics
