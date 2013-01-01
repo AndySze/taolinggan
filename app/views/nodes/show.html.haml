@@ -3,6 +3,11 @@
     $("a.super").click(function() { $("textarea.mll:first").focus() });
 
 = render 'shared/new_topics'
+- content_for :rightbar do
+  .box.fix_cell
+    .box-header
+      热门节点
+    = render :partial => 'welcome/rightbar_plane', :collection => Plane.cached_all(Plane.default_order_str), :as => :plane
 
 - if user_signed_in? and current_user.can_manage_site?
   - content_for :rightbar do

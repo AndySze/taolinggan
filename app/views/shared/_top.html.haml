@@ -15,7 +15,7 @@
         %li= link_to '登出', destroy_user_session_path, :method => :delete, :class => link_class
       - else
         %li= link_to '注册', new_user_registration_path, :class => link_class
-        %li= link_to '登入', new_user_session_path, :class => link_class
+        %li= link_to '登录', new_user_session_path, :class => link_class
   #Search
     .search_input
       %input#q{:type => 'text', :maxlength => 40, :name => 'q', :data => {:domain => Siteconf.site_host}}

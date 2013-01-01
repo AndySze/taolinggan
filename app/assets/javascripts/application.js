@@ -19,4 +19,3 @@
 //= require jquery_effects_highlight
 //= require jquery_elastic
 //= require rabel
-//= require social-share-button

@@ -1,7 +1,17 @@
 = render 'shared/new_topics'
 = render 'nodes/custom_fields', :node => @node
 = render 'topics/show/bookmarked_users'
-= render 'topics/show/manage'
+/用于显示同节点下的其它帖子。
+- content_for :rightbar do
+  .box.fix_cell
+    .box-header
+      该节点下热门帖子
+    .cell
+      %ul
+        - @node.topics.limit(20).each do |topic|
+          %li
+            = link_to topic.title,topic
+/= render 'topics/show/manage'
 
 - content_for :template_js do
   :plain
@@ -53,11 +63,16 @@
             = link_to '加入收藏', topic_bookmarks_path(@topic), :method => :post, :class => 'btn btn-mini btn-primary bookmark'
           - if can? :update, @topic
             .btn-group
-              = link_to  edit_node_topic_path(@node, @topic), :class => 'btn btn-mini' do
+              = link_to  edit_node_topic_path(@node, @topic), :class => 'btn btn-mini',:rel => "tooltip", "data-placement" => "top", "data-original-title" => "编辑帖子" do
                 <i class="icon-pencil"></i>
               = link_to node_topic_path(@node, @topic), :method => :delete, :data => {:confirm => t(:delete_confirm)}, :class => 'btn btn-mini' do
                 <i class="icon-remove"></i>
-      .clearfix
+              - if current_user.can_manage_site?
+                - toggle_comments_closed_tip = @topic.comments_closed? ? '允许回复' : '禁止回复'
+                = link_to toggle_comments_closed_tip, topic_toggle_comments_closed_path(@topic), :method => :put, :class => 'btn btn-mini'
+                - toggle_sticky_tip = @topic.sticky? ? '取消置顶' : '置顶此话题'
+                = link_to toggle_sticky_tip, topic_toggle_sticky_path(@topic), :method => :put, :class => 'btn btn-mini'
+        .clearfix
 
 = render 'topics/show/comments' if @comments.any?
 

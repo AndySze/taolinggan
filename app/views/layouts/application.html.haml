@@ -4,7 +4,7 @@
     = render 'shared/head'
   %body
     #Top
-      = render 'shared/top', :link_class => :top
+      = render 'shared/user_nav', :link_class => :top
     #Wrapper
       - if Siteconf.global_banner.present?
         .sep10

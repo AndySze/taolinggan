@@ -20,6 +20,7 @@ jQuery ($) ->
   .mouseleave ->
     $(this).css('background', '')
   $("textarea").elastic()
+  $("a[rel=tooltip]").tooltip()                     #tooltip
   $("form.navbar-search").submit () ->
       search_input = $("#q");
       query = search_input.val()
