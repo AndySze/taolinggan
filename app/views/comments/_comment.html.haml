@@ -4,7 +4,7 @@
     %table{:cellpadding => 0, :cellspacing => 0, :border => 0, :width => '100%'}
       %tr
         %td{:valign => :top, :width => 48}
-          = user_profile_avatar_link(comment_user, :medium)
+          = user_profile_avatar_link(comment_user, :medium,"comment")
         %td{:width => 10}
         %td{:width => :auto, :valign => :top}
           .fr
@@ -24,7 +24,7 @@
               = time_ago_in_words(comment.created_at)
               - if user_signed_in?
                 = image_tag 'reply_button.png', :align => :absmiddle, :border => 0, :class => 'clickable mention_button', :data => {:mention => "@#{comment_user.nickname}"}
-          = user_profile_link(comment_user, :class => :dark)
+          = user_profile_link(comment_user,"comment", :class => :dark)
           = show_posting_device(comment)
           .sep5
           .content.reply_content= format_comment comment.content

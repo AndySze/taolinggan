@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def build_navigation(items, class_name='gray')
-    items.unshift(link_to(Siteconf.site_name, root_path, :class => :rabel))
+    items.unshift(link_to(Siteconf.site_name, root_path(:frm => "bread"), :class => :rabel))
     items.join(' <span class="chevron">&nbsp;›&nbsp;</span> ').html_safe
   end
 
@@ -157,24 +157,24 @@ module ApplicationHelper
     end
   end
 
-  def nickname_profile_link(nickname, options={})
+  def nickname_profile_link(nickname,from, options={})
     options[:title] = nickname
     hash_key_append(options, :class, 'dark rabel profile_link')
 
-    link_to nickname, member_path(url_encode(nickname)), options
+    link_to nickname, member_path(url_encode(nickname),:frm => "#{from}_name"), options
   end
 
-  def user_profile_link(user, options={})
-    nickname_profile_link(user.nickname, options)
+  def user_profile_link(user,from, options={})
+    nickname_profile_link(user.nickname, from, options)
   end
 
-  def user_profile_avatar_link(user, avatar_size, options={})
+  def user_profile_avatar_link(user, avatar_size, from, options={})
     avatar_method = "#{avatar_size}_avatar"
 
     options[:title] = user.nickname
     hash_key_append(options, :class, 'profile_link')
 
-    link_to(member_path(url_encode(user.nickname)), options) { send(avatar_method, user) }
+    link_to(member_path(url_encode(user.nickname),:frm => "#{from}_avatar"), options) { send(avatar_method, user) }
   end
 
   def page_real_url(page)

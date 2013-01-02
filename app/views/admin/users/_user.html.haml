@@ -6,7 +6,7 @@
       .label.label-warning 已屏蔽
     - else
       %strong
-        = user_profile_link(user, :class => :black)
+        = user_profile_link(user,"admin", :class => :black)
   %td.w50{:align => :left}
     - if user.root?
       %strong.green ROOT

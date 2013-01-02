@@ -3,10 +3,10 @@
   .pull-right.timeago
     = time_ago_in_words(comment.created_at)
   回复了
-  = user_profile_link commentable.user
+  = user_profile_link commentable.user, "profile"
   创建的话题
   %span.chevron ›
-  = link_to commentable.notifiable_title, commentable.notifiable_path, :class => :rabel
+  = link_to commentable.notifiable_title, commentable.notifiable_path,:frm => "profile", :class => :rabel
 .inner
   .reply_content
     = format_comment comment.content

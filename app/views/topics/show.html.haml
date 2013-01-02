@@ -10,7 +10,7 @@
       %ul
         - @node.topics.limit(20).each do |topic|
           %li
-            = link_to topic.title,topic
+            = link_to topic.title,t_path(topic.id,:frm => "sidebar")
 /= render 'topics/show/manage'
 
 - content_for :template_js do
@@ -31,7 +31,7 @@
   %article
     .header
       %div{ :class => "pull-right center" }
-        = user_profile_avatar_link(topic_user, :large)
+        = user_profile_avatar_link(topic_user, :large,"show")
         %div
           - if user_signed_in? and @topic.user != current_user
             - if current_user.following?(@topic.user)
@@ -44,7 +44,7 @@
         = Rabel::Base.make_mention_links(Rabel::Base.h(@topic.title)).html_safe
       %small.topic-meta
         By
-        = user_profile_link(topic_user, :class => :dark)
+        = user_profile_link(topic_user,"show", :class => :dark)
         at
         = time_ago_in_words(@topic.created_at)
         ,

@@ -4,7 +4,7 @@
     = time_ago_in_words(comment.created_at)
   = comment.user.nickname
   回复了
-  = user_profile_link commentable.user
+  = user_profile_link commentable.user,"admin"
   创建的话题
   %span.chevron ›
   = link_to commentable.notifiable_title, commentable.notifiable_path, :class => :rabel
