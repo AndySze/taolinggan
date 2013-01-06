@@ -20,7 +20,7 @@
         %td.auto
           = link_to topic.title, t_path(topic.id)
         %td.auto
-          = user_profile_link(topic.user)
+          = user_profile_link(topic.user,:frm => "")
         %td.auto{:align => :right}
           = topic.comments_count
         %td.auto{:align => :right}
