@@ -125,6 +125,7 @@ class TopicsController < ApplicationController
     @topic.node_id = pt[:node_id]
     puts @topic.node_id
     @topic.title = pt[:title]
+    @topic.image = pt[:image]
     @topic.content = pt[:content]
     if @topic.save
       redirect_to t_path(@topic.id)

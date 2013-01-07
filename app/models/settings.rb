@@ -8,6 +8,6 @@ class Settings < Settingslogic
   end
 
   def self.topic_list_styles
-    {:simple => '极简', :complex => '丰富'}
+    {:simple => '极简', :complex => '丰富',:blog => '博客'}
   end
 end

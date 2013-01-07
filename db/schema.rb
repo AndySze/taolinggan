@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204032057) do
+ActiveRecord::Schema.define(:version => 20130107140856) do
 
   create_table "accounts", :force => true do |t|
     t.integer  "user_id"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
 
   add_index "advertisements", ["expire_date"], :name => "index_advertisements_on_expire_date"
   add_index "advertisements", ["start_date"], :name => "index_advertisements_on_start_date"
+
+  create_table "authentications", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "authentications", ["provider", "uid"], :name => "index_authorizations_on_provider_and_uid"
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id"
@@ -183,6 +193,7 @@ ActiveRecord::Schema.define(:version => 20121204032057) do
     t.string   "last_replied_by", :default => ""
     t.integer  "flag",            :default => 0,     :null => false
     t.datetime "last_replied_at"
+    t.string   "image"
   end
 
   add_index "topics", ["involved_at"], :name => "index_topics_on_involved_at"
