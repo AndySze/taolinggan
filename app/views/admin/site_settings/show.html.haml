@@ -86,6 +86,15 @@
             = radio_button_tag 'settings[allow_markdown_in_pages]', 'off', !@settings.allow_markdown_in_pages?
             关闭
       .control-group
+        = label_tag 'settings[allow_user_post_topics]', '允许用户发布文章', :class => 'control-label'
+        .controls
+          %label.radio.inline
+            = radio_button_tag 'settings[allow_user_post_topics]', 'on', @settings.allow_user_post_topics?
+            允许
+          %label.radio.inline
+            = radio_button_tag 'settings[allow_user_post_topics]', 'off', !@settings.allow_user_post_topics?
+            关闭
+      .control-group
         = label_tag 'settings[custom_head_tags]', '自定义Head标签', :class => 'control-label'
         .controls
           = text_area_tag 'settings[custom_head_tags]', @settings.custom_head_tags, :class => :span6, :rows => 5

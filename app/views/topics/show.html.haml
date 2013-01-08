@@ -52,7 +52,10 @@
         次浏览
       .clearfix
     .inner
-      .content.topic_content= format_topic(@topic.content)
+      .content.topic_content
+        - if @topic.image
+          = image_tag @topic.image,style:"margin-bottom:20px"
+        = format_topic(@topic.content)
     .inner
       - if user_signed_in?
         = render 'shared/baidu_share'

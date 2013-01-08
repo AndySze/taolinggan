@@ -15,7 +15,8 @@ class Siteconf < RailsSettings::CachedSettings
   boolean_attributes :show_captcha, :show_community_stats,
     :allow_markdown_in_topics,
     :allow_markdown_in_comments,
-    :allow_markdown_in_pages
+    :allow_markdown_in_pages,
+    :allow_user_post_topics
 
   class << self
     def seo_keywords_str
