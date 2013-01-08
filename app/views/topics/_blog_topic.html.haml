@@ -3,10 +3,11 @@
 .cell.topics{:class => topic_user.can_manage_site? ? 'admin' : ''}
   .pull-left.topic_image
     =# user_profile_avatar_link(topic_user, :medium,"list",:frm => "list_avatar")
-    - if topic.image
-      = image_tag topic.image,:width => "290px"
-    - else
-      = image_tag "topic_default.png",:width => "290px"
+    = link_to t_path(topic.id),title: topic.title do
+      - if topic.image
+        = image_tag topic.image,:width => "290px"
+      - else
+        = image_tag "topic_default.png",:width => "290px"
   .topic.topic_home
     .item_title
       - if comments_count > 0
