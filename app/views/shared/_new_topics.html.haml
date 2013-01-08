@@ -1,4 +1,4 @@
-- if Siteconf.allow_user_post_topics == 'on' || current_user.admin? || current_user.root?
+- if Siteconf.allow_user_post_topics == 'on' || (current_user && current_user.can_manage_site?)
   - content_for :rightbar do
     .box
       .cell
