@@ -12,5 +12,7 @@ class PagesController < ApplicationController
     else
       @seo_description = @page.content
     end
+
+    @canonical_path = page_url(@page.key)
   end
 end

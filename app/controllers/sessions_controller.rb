@@ -3,6 +3,7 @@ class SessionsController < Devise::SessionsController
   def new
     @title = '登录'
     @seo_description = @title
+    @canonical_path = new_user_session_url
 
     super
   end
