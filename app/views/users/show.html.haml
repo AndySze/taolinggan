@@ -6,7 +6,7 @@
         %span.gray= "(#{@user.follower_count})"
       .inner
         - @user.recent_followers.each do |follower|
-          = user_profile_avatar_link(follower, :mini)
+          = user_profile_avatar_link(follower, :mini,"")
 
 .box
   %div{:class => (@introduction.length > 0) ? 'cell' : 'inner'}
